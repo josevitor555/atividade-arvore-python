@@ -26,8 +26,14 @@ tree.insert(15)
 tree.insert(20)
 tree.insert(25)
 
-# Caso 1: Removendo o nó sem filho
-tree.delete(25)
+# Caso 1: Nó sem filhos (Nó folhas)
+tree.delete(2) # Ok
+
+# Caso 2: Nó com um filho
+tree.delete(5) # Ok
+
+# Caso 3: Nó com dois filhos (substituir pelo sucessor)
+tree.delete(15) # Ok
 
 # Acessando os nós filhos
 left_child = tree.get_left_child()
@@ -63,7 +69,7 @@ max_value = BinaryTree.max_value(tree)
 print("Valor máximo na árvore:", max_value)
 
 # Método find
-found_node = BinaryTree.find(tree, "A")
+found_node = BinaryTree.find(tree, 10)
 if found_node:
   print(f"Nó encontrado: {found_node.root}")
 else:

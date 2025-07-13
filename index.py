@@ -63,9 +63,10 @@ class BinaryTree:
     if value < self.root:
       if self.left_child:
         self.left_child = self.left_child.delete(value)
-      elif value > self.root:
-        if self.right_child:
-          self.right_child = self.right_child.delete(value)
+    elif value > self.root:
+      if self.right_child:
+        self.right_child = self.right_child.delete(value)
+        
     else:
       
       # Caso 1: Nó sem filhos
@@ -73,16 +74,18 @@ class BinaryTree:
         return None
       
       # Caso 2: Nó com um filho
-      if not self.right_child:
+      if not self.left_child:
         return self.right_child
+      if not self.right_child:
+        return self.left_child
       
       # Caso 3: Nó com dois filhos (substituir pelo sucessor)
-      min_larger_node = self.right_child
-      while min_larger_node.left_child:
-        min_larger_node = min_larger_node.left_child
+      sucessor_do_no = self.right_child
+      while sucessor_do_no.left_child:
+        sucessor_do_no = sucessor_do_no.left_child
       
-      self.root = min_larger_node.root
-      self.right_child = self.right_child.delete(min_larger_node.root)
+      self.root = sucessor_do_no.root
+      self.right_child = self.right_child.delete(sucessor_do_no.root)
     
     return self
   
@@ -225,7 +228,7 @@ class BinaryTree:
     if self.left_child:
       return self.left_child.min_value()
     
-    return self.root  # Se não houver filho esquerdo, o nó atual é o mínimo  
+    return self.root # Se não houver filho esquerdo, o nó atual é o mínimo  
   
   # Método para buscar o valor máximo (max_value)
   def max_value(self):

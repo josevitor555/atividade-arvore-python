@@ -14,3 +14,19 @@ Antes:           Depois:
  5   15           5   20
     /  \             /
    12  20           12
+
+3 - Predecessor de 15 é o 12 pois ele é o maior valor da subárvore esquerda de 15.
+
+      10
+     /  \
+    5    15
+        /  \
+      12    20
+
+4 - Sucessor de 15 é o 20, pois ele é o menor da subárvore direita de 15
+
+      10
+     /  \
+    5    15
+        /  \
+      12    20 < - Sucessor de 15
