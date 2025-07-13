@@ -39,17 +39,52 @@ class BinaryTree:
       tree.right_child = self.right_child
       self.right_child.parent = tree
       self.right_child = tree
-      
-  # Método insert (chamando os métodos de inserção insert_left e insert_right)
-  # def insert(self, newBranch):
     
-  #   """Insere um novo nó na árvore."""
-  #   if self.left_child is None:
-  #     self.insert_left(newBranch)
-  #   elif self.right_child is None:
-  #     self.insert_right(newBranch)
-  #   else:
-  #     print("A árvore já está cheia.")
+  # Método que engloba insert_right e insert_left
+  def insert(self, value):
+    """Insere um novo nó na árvore seguindo as regras de BST."""
+    
+    if value < self.root:
+      if self.left_child is None:
+        self.left_child = BinaryTree(value)
+        self.left_child.parent = self
+      else:
+        self.left_child.insert(value)
+        
+    elif value > self.root:
+      if self.right_child is None:
+        self.right_child = BinaryTree(value)
+        self.right_child.parent = self
+      else:
+        self.right_child.insert(value)
+  
+  # Método delete
+  def delete(self, value):
+    if value < self.root:
+      if self.left_child:
+        self.left_child = self.left_child.delete(value)
+      elif value > self.root:
+        if self.right_child:
+          self.right_child = self.right_child.delete(value)
+    else:
+      
+      # Caso 1: Nó sem filhos
+      if not self.left_child and not self.right_child:
+        return None
+      
+      # Caso 2: Nó com um filho
+      if not self.right_child:
+        return self.right_child
+      
+      # Caso 3: Nó com dois filhos (substituir pelo sucessor)
+      min_larger_node = self.right_child
+      while min_larger_node.left_child:
+        min_larger_node = min_larger_node.left_child
+      
+      self.root = min_larger_node.root
+      self.right_child = self.right_child.delete(min_larger_node.root)
+    
+    return self
   
   # Pegar o nó filho esquerdo
   def get_left_child(self):
@@ -76,20 +111,19 @@ class BinaryTree:
     
   # Métodos de percurso da árvore
   
-  
-  # 1 - Percurso em ordem (In-order)
+  # 1 - Percurso em ordem (In-order) - esquerda, raiz, direita
   def in_order(self):
     
     """Percurso ordem."""    
     if self.left_child:
       self.left_child.in_order()
-    
+      
     # Imprime o nó atual
     print(self.root)
     if self.right_child:
       self.right_child.in_order()
-  
-  # 2 - Percurso pré-ordem (pre-order)
+    
+  # 2 - Percurso pré-ordem (pre-order) - raiz, esquerda, direita
   def pre_order(self):
     
     print(self.root)
@@ -97,13 +131,10 @@ class BinaryTree:
     """Percurso pré-ordem."""    
     if self.left_child:
       self.left_child.pre_order()
-    
-    # Imprime o nó atual
-    print(self.root)
     if self.right_child:
       self.right_child.pre_order()
   
-  # 3 - Percurso pós-ordem (post-order)
+  # 3 - Percurso pós-ordem (post-order) - esquerda, direita, raiz
   def post_order(self):
     
     """Percurso pós-ordem."""
@@ -262,4 +293,3 @@ class BinaryTree:
       self.left_child.print_tree(level + 1, "L--- ")
     if self.right_child:
       self.right_child.print_tree(level + 1, "R--- ")
-  

@@ -2,18 +2,32 @@
 from index import BinaryTree
 
 # Criando uma árvore binária
-tree = BinaryTree("A")
 
-# Inserindo nós à esquerda e à direita
-tree.insert_left("B")
-tree.insert_left("C")
-tree.insert_left("D")
+# tree = BinaryTree("A")
 
-# Inserindo um nó à direita
-tree.insert_right("E")
-tree.insert_right("F")
-tree.insert_right("G")
-tree.insert_right("H")
+# # Inserindo nós à esquerda e à direita
+# tree.insert_left("B")
+# tree.insert_left("C")
+# tree.insert_left("D")
+
+# # Inserindo um nó à direita
+# tree.insert_right("E")
+# tree.insert_right("F")
+# tree.insert_right("G")
+# tree.insert_right("H")
+
+tree = BinaryTree(10)
+
+# Inserindo nós a arvore
+tree.insert(5)
+tree.insert(2)
+tree.insert(1)
+tree.insert(15)
+tree.insert(20)
+tree.insert(25)
+
+# Caso 1: Removendo o nó sem filho
+tree.delete(25)
 
 # Acessando os nós filhos
 left_child = tree.get_left_child()
@@ -54,3 +68,17 @@ if found_node:
   print(f"Nó encontrado: {found_node.root}")
 else:
   print("Nó não encontrado.")
+  
+print("-" * 30)
+  
+# Método inorder
+print("Arvore in-order - esquerda, raiz, direita: ")
+BinaryTree.in_order(tree)
+
+# Método preorder
+print("Arvore pre-order - raiz, esquerda, direita: ")
+BinaryTree.pre_order(tree)
+
+# Método postOrder
+print("Arvore post-order - esquerda, direita, raiz: ")
+BinaryTree.post_order(tree)

@@ -1,0 +1,16 @@
+1 - Antes de remover o 15 (Nó com dois fillhos):
+
+      10
+     /  \
+    5    15
+        /  \
+      12    20
+
+2 - Após a remoção do nó 15
+
+Antes:           Depois:
+   10               10
+  /  \             /  \
+ 5   15           5   20
+    /  \             /
+   12  20           12
