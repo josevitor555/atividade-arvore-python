@@ -1,5 +1,6 @@
 #  Chamando os módulos
 from index import BinaryTree
+from binarytree import Node, build
 
 # Criando uma árvore binária
 
@@ -16,24 +17,67 @@ from index import BinaryTree
 # tree.insert_right("G")
 # tree.insert_right("H")
 
-tree = BinaryTree(10)
+# Function to convert your BinaryTree to binarytree.Node for visualization
+def convert_to_binarytree_node(tree):
+    if not tree:
+        return None
+    node = Node(tree.root)
+    node.left = convert_to_binarytree_node(tree.get_left_child())
+    node.right = convert_to_binarytree_node(tree.get_right_child())
+    return node
+
+#  Criando a 
+tree = BinaryTree(4)
 
 # Inserindo nós a arvore
-tree.insert(5)
+
+# Valores menores que 4 (Root)
+tree.insert(3)
 tree.insert(2)
-tree.insert(1)
-tree.insert(15)
-tree.insert(20)
-tree.insert(25)
+tree.insert(0)
+
+# Valores maiores que 4 (Root)
+tree.insert(8)
+tree.insert(9)
+tree.insert(7)
+tree.insert(5)
 
 # Caso 1: Nó sem filhos (Nó folhas)
-tree.delete(2) # Ok
+# tree.delete(2) # Ok
 
 # Caso 2: Nó com um filho
-tree.delete(5) # Ok
+# tree.delete(5) # Ok
 
 # Caso 3: Nó com dois filhos (substituir pelo sucessor)
-tree.delete(15) # Ok
+# tree.delete(10) # Ok
+
+# Convert to binarytree.Node for visualization
+binarytree_root = convert_to_binarytree_node(tree)
+
+# Print the tree in the console
+print("Visualização da árvore binária: ")
+print(binarytree_root)
+
+from graphviz import Digraph
+
+def save_tree_as_png(root, filename="binary_tree"):
+  dot = Digraph()
+  def add_nodes_edges(node, dot_graph):
+    if not node:
+      return
+    
+    dot.node(str(node.value))
+    if node.left:
+      dot.edge(str(node.value), str(node.left.value))
+      add_nodes_edges(node.left, dot_graph)
+      
+      if node.right:
+        dot.edge(str(node.value), str(node.right.value))
+        add_nodes_edges(node.right, dot_graph)
+        add_nodes_edges(root, dot)
+        dot.render(filename, format="png", cleanup=True)
+        print(f"Tree saved as {filename}.png")
+
 
 # Acessando os nós filhos
 left_child = tree.get_left_child()
@@ -75,16 +119,23 @@ if found_node:
 else:
   print("Nó não encontrado.")
   
-print("-" * 30)
+print("-" * 60)
   
 # Método inorder
 print("Arvore in-order - esquerda, raiz, direita: ")
 BinaryTree.in_order(tree)
 
+print("-" * 60)
+
 # Método preorder
 print("Arvore pre-order - raiz, esquerda, direita: ")
 BinaryTree.pre_order(tree)
 
+print("-" * 60)
+
 # Método postOrder
 print("Arvore post-order - esquerda, direita, raiz: ")
 BinaryTree.post_order(tree)
+
+# Salvando como png
+save_tree_as_png(binarytree_root)
