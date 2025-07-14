@@ -42,8 +42,8 @@ class BinaryTree:
     
   # Método que engloba insert_right e insert_left
   def insert(self, value):
-    """Insere um novo nó na árvore seguindo as regras de BST."""
     
+    """Insere um novo nó na árvore seguindo as regras de BST."""
     if value < self.root:
       if self.left_child is None:
         self.left_child = BinaryTree(value)
@@ -60,6 +60,7 @@ class BinaryTree:
   
   # Método delete
   def delete(self, value):
+    
     if value < self.root:
       if self.left_child:
         self.left_child = self.left_child.delete(value)
@@ -69,7 +70,7 @@ class BinaryTree:
         
     else:
       
-      # Caso 1: Nó sem filhos
+      # Caso 1: Nó sem filhos (Nó-Folha)
       if not self.left_child and not self.right_child:
         return None
       

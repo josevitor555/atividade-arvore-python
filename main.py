@@ -26,7 +26,7 @@ def convert_to_binarytree_node(tree):
     node.right = convert_to_binarytree_node(tree.get_right_child())
     return node
 
-#  Criando a 
+# Criando a Arvore
 tree = BinaryTree(4)
 
 # Inserindo nós a arvore
@@ -53,6 +53,8 @@ tree.insert(5)
 
 # Convert to binarytree.Node for visualization
 binarytree_root = convert_to_binarytree_node(tree)
+
+print("-" * 60)
 
 # Print the tree in the console
 print("Visualização da árvore binária: ")

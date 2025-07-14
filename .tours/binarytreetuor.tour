@@ -1,0 +1,36 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "BinaryTreeTuor",
+  "steps": [
+    {
+      "file": "index.py",
+      "description": "Se o valor passado (value) for menor que o valor do nó atual (self.root), e se existir uma subárvore à esquerda (self.left_child), o método delete é chamado recursivamente na subárvore esquerda. Da mesma forma, se o value for maior que self.root e existir uma subárvore à direita (self.right_child), o método é chamado recursivamente na subárvore direita. Esse processo continua recursivamente até encontrar o nó com o valor value. Quando encontrado, a remoção é tratada no bloco else, onde o nó pode ser removido e substituído por None (se não tiver filhos), por um filho (se tiver um filho) ou pelo sucessor (se tiver dois filhos), dependendo do caso.",
+      "line": 64
+    },
+    {
+      "file": "index.py",
+      "description": "# É chamado recursivamente, nas subárvores esquerda, quando o valor a ser inserido não pode ser colocado diretamente no nó atual.",
+      "line": 52
+    },
+    {
+      "file": "index.py",
+      "description": "É chamado recursivamente, nas subárvores direita, quando o valor a ser inserido não pode ser colocado diretamente no nó atual.",
+      "line": 59
+    },
+    {
+      "file": "index.py",
+      "description": "O nó a ser removido não possui subrárvore à esquerda (not self.left_child) nem à direita (not self.right_child).\r\nA ação a ser tomada é atribuir None a ambos os ponteiros, indicando que o nó foi removido. O pai do nó atualiza seu ponteiro\r\n(esquerdo) ou (direito), removendo-o efetivamente o nó da árvore.",
+      "line": 73
+    },
+    {
+      "file": "index.py",
+      "description": "O nó a ser removido possui exatamente um filho (ou à esquerda ou à direita), verificado por not self.left_child (sem filho à esquerda)\r\nou not self.right_child (sem filho à dierita).\r\n\r\n1 - Se não houver filho à esquerda, retorna self.right_child, promovendo o filho à dierita para\r\nsubstiuir o nó removido.\r\n\r\n2 - Se não houver filho à direita, retorna self.left_child, promovendo o filho à esquerda para\r\nsubstiuir o nó removido.",
+      "line": 77
+    },
+    {
+      "file": "index.py",
+      "description": "O nó a ser removido tem tanto um filho à esquerda (self.left_child) quanto um filho à direita (self.right_child).\r\n\r\n1 - Encontra o Sucessor: O sucessor é o menor valor na subárvore direita, identificado começando em self.right_child e descendo pela esquerda até não haver mais filho à esquerda (while sucessor_do_no.left_child).\r\n\r\n2 - Substitui o Valor: O valor do nó atual (self.root) é substituído pelo valor do sucessor (sucessor_do_no.root).\r\n\r\n3 - Remove o Sucessor: O sucessor é removido da subárvore direita com uma chamada recursiva self.right_child.delete(sucessor_do_no.root), e o resultado é atribuído de volta a self.right_child para ajustar a árvore.",
+      "line": 83
+    }
+  ]
+}
