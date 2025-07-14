@@ -27,21 +27,19 @@ def convert_to_binarytree_node(tree):
     return node
 
 # Criando a Arvore
-tree = BinaryTree(4)
+tree = BinaryTree(30)
 
 # Inserindo nós a arvore
 
-# Valores menores que 4 (Root)
-tree.insert(3)
-tree.insert(2)
-tree.insert(0)
+# Valores menores que 30 (Root)
+tree.insert(15)
+tree.insert(10)
+tree.insert(20)
 
-# Valores maiores que 4 (Root)
-tree.insert(8)
-tree.insert(9)
-tree.insert(7)
-tree.insert(5)
-
+# Valores maiores que 30 (Root)
+tree.insert(60)
+tree.insert(40)
+tree.insert(80)
 # Caso 1: Nó sem filhos (Nó folhas)
 # tree.delete(2) # Ok
 

@@ -41,22 +41,21 @@ class BinaryTree:
       self.right_child = tree
     
   # Método que engloba insert_right e insert_left
+  
   def insert(self, value):
-    
-    """Insere um novo nó na árvore seguindo as regras de BST."""
     if value < self.root:
       if self.left_child is None:
         self.left_child = BinaryTree(value)
         self.left_child.parent = self
       else:
-        self.left_child.insert(value)
-        
+        return self.left_child.insert(value)
+      
     elif value > self.root:
       if self.right_child is None:
         self.right_child = BinaryTree(value)
         self.right_child.parent = self
       else:
-        self.right_child.insert(value)
+        return self.right_child.insert(value)
   
   # Método delete
   def delete(self, value):
@@ -281,7 +280,7 @@ class BinaryTree:
       if found:
         return found # Se encontrar na subárvore esquerda, retorna o nó encontrado
     
-    # Se o valor for menor, busca na subárvore direita
+    # Se o valor for menor, busca na subárvore esquerda
     if self.right_child:
       found = self.right_child.find(value)
       if found:
